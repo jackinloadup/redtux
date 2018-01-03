@@ -1,0 +1,6 @@
+[package]
+name = "matcha"
+version = "0.1.0"
+authors = ["Bas Palmer <ik@baspalmer.nl>"]
+
+[dependencies]
