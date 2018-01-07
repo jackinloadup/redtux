@@ -1,37 +1,13 @@
 extern crate clap;
-extern crate rawr;
 extern crate gio;
 extern crate gtk;
 
 mod config;
 
-use rawr::prelude::*;
 use config::Config;
 use gio::prelude::*;
 use gtk::prelude::*;
 use std::env::args;
-
-
-//fn main() {
-//    let config = Config::new();
-//    println!("{:?}", config);
-//
-//    // Creates a new client to access the reddit API. You need to set a user agent so Reddit knows
-//    // who is using this client.
-//    //let client = RedditClient::new("your user agent here", AnonymousAuthenticator::new());
-//    //// Access the subreddit /r/rust.
-//    //let subreddit = client.subreddit(&config.subreddit.to_owned()[..]);
-//    //// Gets the hot listing of /r/rust. If the API request fails, we will panic with `expect`.
-//    //let mut hot_listing = subreddit.hot(ListingOptions::default()).expect("Could not fetch post listing!");
-//    //// Iterates through the top 50 posts of /r/rust. If you do not `take(n)`, this iterator will
-//    //// continue forever!
-//    //for post in hot_listing.take(1) {
-//    //    println!("{:?}", post.link_url());
-//    //}
-//}
-
-
-
 
 // make moving clones into closures more convenient
 macro_rules! clone {
@@ -83,17 +59,5 @@ fn main() {
 
     application.run(&args().collect::<Vec<_>>());
 
-    // Creates a new client to access the reddit API. You need to set a user agent so Reddit knows
-    // who is using this client.
-    let client = RedditClient::new("your user agent here", AnonymousAuthenticator::new());
-    // Access the subreddit /r/rust.
-    let subreddit = client.subreddit("wallpapers");
-    // Gets the hot listing of /r/rust. If the API request fails, we will panic with `expect`.
-    let mut hot_listing = subreddit.hot(ListingOptions::default()).expect("Could not fetch post listing!");
-    // Iterates through the top 50 posts of /r/rust. If you do not `take(n)`, this iterator will
-    // continue forever!
-    for post in hot_listing.take(1) {
-        println!("{:?}", post.link_url());
-    }
 }
 
